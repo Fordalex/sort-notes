@@ -13,4 +13,6 @@ urlpatterns = [
     # edit urls
     path('edit_subject/<subject_pk>', views.edit_subject, name="edit_subject"),
 
+    # remove data
+    path('remove_data/<data_type>/<pk>', views.remove_data, name="remove_data"),
 ]

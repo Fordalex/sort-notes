@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Item(models.Model):
@@ -35,6 +36,7 @@ class Subject(models.Model):
     information = models.CharField(max_length=250)
     image = models.ImageField(null=True, blank=True)
     section = models.ManyToManyField(Section, blank=True)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

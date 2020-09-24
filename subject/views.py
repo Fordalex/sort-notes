@@ -21,9 +21,11 @@ def subject(request, pk):
 def add_subject(request):
 
     if request.method == "POST":
-        form = subjectForm(request.POST)
+        form = subjectForm(request.POST, request.FILES)
         if form.is_valid:
-            form.save()
+            subject = form.save(commit=False)
+            subject.user = request.user
+            subject.save()
             return redirect('menu')
 
     context = {
@@ -140,3 +142,14 @@ def edit_subject(request, subject_pk):
     }
 
     return render(request, 'subject/edit_subject.html', context)
+
+
+# Remove data
+
+def remove_data(request, data_type ,pk):
+
+    if data_type == 'subject':
+        subject = get_object_or_404(Subject, pk=pk)
+        subject.delete()
+
+    return redirect('menu')

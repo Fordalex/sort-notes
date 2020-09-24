@@ -5,7 +5,7 @@
     
     <div class="form-wrapper">
         <h4 class="text-dark">Add Subject</h4>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ subjectForm }}
             <button type="submit" class="btn btn-success">Add</button>

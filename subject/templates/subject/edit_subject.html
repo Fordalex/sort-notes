@@ -14,9 +14,13 @@
             <label class="d-block">Change Image</label>
             <input type="checkbox" name="change_image">
             <label class="d-block">Image</label>
-            <input type="file" value="{{subject.image}}" name="image">
-            <button type="submit" class="btn btn-success">Update</button>
+            <input type="file" placeholder="{{subject.image}}" name="image">
+            <button type="submit" class="btn btn-success container-fluid">Update</button>
         </form>
+    </div>
+    <div class="form-wrapper ml-3">
+        <h4>Remove Subject</h4>
+        <a href="/subject/remove_data/subject/{{subject.id}}" class="btn btn-danger container-fluid">Remove</a>
     </div>
 </div>
 

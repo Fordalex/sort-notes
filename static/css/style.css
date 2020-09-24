@@ -88,6 +88,10 @@ body {
     margin-top: 12px;
 }
 
+.clickable:hover {
+    cursor: pointer;
+}
+
 
 /* base styling */
 
@@ -560,6 +564,6 @@ span {
 
 .background-image {
     z-index: -1;
-    position: absolute;
+    position: fixed;
     width: 100vw;
 }
