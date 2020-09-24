@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="text-dark">Edit Dropdown</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ dropdownForm }}
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+{% endblock %}
