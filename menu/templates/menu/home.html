@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+
+<img src="{{ MEDIA_URL }}background/notes_background.png" class="background-image">
 
 <div class="page-move">
 
     <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
-        <h2 class="text-center text-dark">Menu</h2>
+        <h2 class="text-center pt-4">Menu</h2>
         <h6 class="text-secondary text-center">Subjects</h6>
         
         <div class="row m-0 p-0 justify-content-center">
@@ -32,4 +35,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

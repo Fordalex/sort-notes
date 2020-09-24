@@ -557,3 +557,9 @@ span {
 .add-icon {
     width: 35px;
 }
+
+.background-image {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+}
