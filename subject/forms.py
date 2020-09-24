@@ -64,11 +64,23 @@ class dropdownForm(forms.ModelForm):
 class itemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('title','information')
+        fields = ('title', 'website', 'model')
         widgets = {
             'title' : forms.TextInput(
                 attrs = {
                     'class' : 'container-fluid form-control',
+                    }
+            ),
+            'website' : forms.TextInput(
+                attrs = {
+                    'class' : 'container-fluid form-control',
+                    'placeholder': 'www.please_copy_link.com',
+                    }
+            ),
+            'model' : forms.TextInput(
+                attrs = {
+                    'class' : 'd-block',
+                    'type': 'checkbox'
                     }
             ),
         }

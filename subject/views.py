@@ -66,9 +66,9 @@ def edit_attribute(request, pk):
 
     return render(request, 'subject/edit_attribute.html', context)
 
-def edit_dropdown(request, pk):
+def edit_dropdown(request, attribute_pk, subject_pk):
 
-    attribute = Attribute.objects.get(pk=pk)
+    attribute = Attribute.objects.get(pk=attribute_pk)
 
     if request.method == "POST":
         form = dropdownForm(request.POST)
@@ -77,7 +77,7 @@ def edit_dropdown(request, pk):
             dropdown.save()
             attribute.dropdown.add(dropdown.id)
             
-            return redirect('menu')
+            return redirect('subject', subject_pk)
 
     context = {
         'dropdownForm': dropdownForm
