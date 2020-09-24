@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="form-conatiner">
-    <div class="form-wrapper">
-<h4 class="text-dark">Edit Dropdown</h4>
+<img src="{{ MEDIA_URL }}background/notes_background.png" class="background-image">
 
-<form method="POST">
-    {% csrf_token %}
-    {{ dropdownForm }}
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
-</div>
+<div class="page-move">
+    <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
+
+        <div class="form-conatiner">
+            <div class="form-wrapper">
+                <h4 class="text-dark">Add Dropdown</h4>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ dropdownForm }}
+                    <button type="submit" class="btn btn-success container-fluid">Submit</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
 </div>
 
 {% endblock %}

@@ -12,7 +12,8 @@ urlpatterns = [
     path('add_item/<pk>/<subject_pk>', views.add_item, name="add_item"),
     # edit urls
     path('edit_subject/<subject_pk>', views.edit_subject, name="edit_subject"),
+    path('edit_dropdown/<dropdown_pk>/<subject_pk>', views.edit_dropdown, name="edit_dropdown"),
 
     # remove data
-    path('remove_data/<data_type>/<pk>', views.remove_data, name="remove_data"),
+    path('remove_data/<data_type>/<pk>/<subject_pk>', views.remove_data, name="remove_data"),
 ]

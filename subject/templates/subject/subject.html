@@ -22,7 +22,7 @@
                 <div class="row m-0 p-1 secondary-background wobble-onload" id="frontend-section">
                     <div class="col-12 p-0">
                         <a class="float-right collapse edit_icon"><img
-                                src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
+                                src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
                         <h3 class="py-3 text-center secondary-title">{{ section.title }}</h3>
                         <hr>
                     </div>
@@ -35,7 +35,13 @@
                     <div class="col-12 px-0 px-lg-2">
                         <dl>
                             {% for dropdown in attribute.dropdown.all %}
-                            <dt><img src="{{ dropdown.image_src }}" class="mr-2" />{{ dropdown.title }} <i
+                            <dt>
+                                <a class="collapse edit_icon mr-2 clickable" href="/subject/edit_dropdown/{{ dropdown.id }}/{{subject.id}}"><img
+                                    src="https://img.icons8.com/cotton/20/000000/create-new--v1.png"/></a>
+                                {% if dropdown.icon %}
+                                {{ dropdown.icon | safe }}
+                                {% endif %}
+                                <img src="{{ dropdown.image_src }}" class="mr-2" />{{ dropdown.title }} <i
                                     class="far fa-plus-square ml-2 small-icon front-plus " data-toggle="collapse"
                                     href="#dropdown{{ dropdown.id }}-{{forloop.counter}}"></i> 
                                     {% if dropdown.model %}
