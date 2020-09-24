@@ -5,16 +5,14 @@
 <div class="page-move">
 
     <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
-        <a class="float-right mt-2" href="{% url 'edit_subject' %}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
         <h2 class="text-center text-dark">Menu</h2>
         <h6 class="text-secondary text-center">Subjects</h6>
         
         <div class="row m-0 p-0 justify-content-center">
             {% for subject in subjects %}
-
-
             <div class="col-12 col-md-6 col-lg-3  m-0 p-0 d-flex justify-content-center my-3 p-1 p-md-3">
                 <div class="card p-1 full-width-card" style="width: 18rem;">
+                    <a class="d-block ml-auto" href="/subject/edit_attribute/{{ section.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
                     <img src="static/media/web_development.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ subject.title }}</h5>
@@ -23,8 +21,12 @@
                     </div>
                 </div>
             </div>
-
             {% endfor %}
+            <div class="col-12 col-md-6 col-lg-3  m-0 p-0 d-flex justify-content-center my-3 p-1 p-md-3">
+                <a class="card p-1 full-width-card low-opacity d-flex justify-content-center align-items-center" style="width: 18rem;" href="{% url 'edit_subject' %}">
+                    <img src="https://img.icons8.com/flat_round/35/000000/plus.png" class="py-2 add-icon"/>
+                </a>
+            </div>
         </div>
     </div>
 </div>

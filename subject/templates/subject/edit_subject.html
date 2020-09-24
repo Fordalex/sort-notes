@@ -2,14 +2,14 @@
 
 {% block content %}
 <div class="form-conatiner">
+    
     <div class="form-wrapper">
-<h4 class="text-dark">Edit Subject</h4>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ subjectForm }}
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
-</div>
+        <h4 class="text-dark">Add Subject</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ subjectForm }}
+            <button type="submit" class="btn btn-success">Add</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

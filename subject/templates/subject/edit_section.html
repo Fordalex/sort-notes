@@ -5,23 +5,11 @@
 
 <div class="form-conatiner">
     <div class="form-wrapper">
-        <h4>Edit Subject Title</h4>
-        <form method="POST">
-            {% csrf_token %}
-            <label>Title</label>
-            <input value="{{ subject.title }}" class="form-control">
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-    </div>
-</div>
-
-<div class="form-conatiner">
-    <div class="form-wrapper">
         <h4>Add Section</h4>
         <form method="POST">
             {% csrf_token %}
             {{ sectionForm }}
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success">Add</button>
         </form>
     </div>
 </div>

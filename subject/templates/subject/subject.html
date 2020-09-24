@@ -8,7 +8,6 @@
 
 
     <a href="{% url 'menu' %}" class="btn btn-danger float-left mt-2">Home</a>
-    <a class="float-right pt-2" href="/subject/edit_section/{{ subject.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
 
     <h2 class="text-dark text-center">{{ subject.title }}</h2>
     <h6 class="text-secondary text-center">{{ subject.information }}</h6>
@@ -18,7 +17,7 @@
         <div class="col-12 col-md-6 col-lg-4 p-0 p-md-2">
             <div class="row m-0 p-1 secondary-background wobble-onload" id="frontend-section">
                 <div class="col-12 p-0">
-                    <a class="float-right" href="/subject/edit_attribute/{{ section.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
+                    <a class="float-right" ><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
                     <h3 class="py-3 text-center secondary-title">{{ section.title }}</h3>
                     <hr>
                 </div>
@@ -27,15 +26,14 @@
                     <h4 class="mb-3">{{ attribute.title }}</h4>
                     <a class="float-right mr-3" href="/subject/edit_dropdown/{{ attribute.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
                 </div>
-               
                 <div class="col-12 px-0 px-lg-2">
                     <dl>
                         {% for dropdown in attribute.dropdown.all %}
                         <dt><img src="{{ dropdown.image_src }}" class="mr-2" />{{ dropdown.title }} <i
                                 class="far fa-plus-square ml-2 small-icon front-plus" data-toggle="collapse"
-                                href="#{{ dropdown.title }}-{{forloop.counter}}"></i><img src="images/question-mark.png" style="width:25px;"
+                                href="#{{ dropdown.title|truncatechars:2 }}-{{forloop.counter}}"></i><img src="images/question-mark.png" style="width:25px;"
                                 class="float-right mr-2 click-icon"></dt>
-                        <div class="collapse wrapper" id="{{ dropdown.title }}-{{forloop.counter}}">
+                        <div class="collapse wrapper" id="{{ dropdown.title|truncatechars:2 }}-{{forloop.counter}}">
                             <div class="p-2">
                                 {% for item in dropdown.item.all %}
                                 <dd>{{ item.title }}
@@ -44,23 +42,35 @@
                                 </dd>
                                 <hr>
                                 {% endfor %}
-                                    <a class="mr-3" href="/subject/edit_item/{{ dropdown.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
-                                
+                                <dd>{{ item.title }}
+                                    <img href="/subject/edit_item/{{ dropdown.id }}" src="https://img.icons8.com/flat_round/20/000000/plus.png" class="py-1"/>
+                                </dd>
+                                    
                             </div>
                         </div>
-                        {% if not forloop.last %}
                         <hr>
-                        {% endif %}
                         {% endfor %}
+                        <dt class="d-flex justify-content-center"><a href="/subject/edit_dropdown/{{ attribute.id }}"><img src="https://img.icons8.com/flat_round/20/000000/plus.png" class="py-1"/></a></dt>
                     </dl>
                 </div>
-               
                 {% endfor %}
+                <div class="col-12 m-0 p-0">
+                    <hr>
+                </div>
+                <a class="col-12 p-0 d-flex justify-content-center low-opacity" href="/subject/edit_attribute/{{ section.id }}">
+                    <img src="https://img.icons8.com/flat_round/25/000000/plus.png" class="py-2 add-icon"/>
+                </a>
             </div>
         </div>
         {% endfor %}
+        <div class="col-12 col-md-6 col-lg-4 p-0 p-md-2 ">
+            <a class="row m-0 p-1 secondary-background wobble-onload low-opacity" id="frontend-section" href="/subject/edit_section/{{ subject.id }}">
+                <div class="col-12 d-flex justify-content-center">
+                    <img src="https://img.icons8.com/flat_round/35/000000/plus.png" class="py-2"/>
+                </div>
+            </a>
+        </div>
     </div>
-
 
 </div>
 
