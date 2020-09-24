@@ -56,7 +56,7 @@ def add_section(request, pk):
     return render(request, 'subject/add_section.html', context)
 
 @login_required
-def add_attribute(request, pk):
+def add_attribute(request, pk, subject_pk):
 
     section = Section.objects.get(pk=pk)
 
@@ -67,7 +67,7 @@ def add_attribute(request, pk):
             attribute.save()
             section.attribute.add(attribute.id)
             
-            return redirect('menu')
+            return redirect('subject', subject_pk)
 
     context = {
         'attributeForm': attributeForm
@@ -96,7 +96,7 @@ def add_dropdown(request, attribute_pk, subject_pk):
     return render(request, 'subject/add_dropdown.html', context)
 
 @login_required
-def add_item(request, pk):
+def add_item(request, pk, subject_pk):
 
     dropdown = DropDown.objects.get(pk=pk)
 
@@ -107,7 +107,7 @@ def add_item(request, pk):
             item.save()
             dropdown.item.add(item.id)
             
-            return redirect('menu')
+            return redirect('subject', subject_pk)
 
     context = {
         'itemForm': itemForm

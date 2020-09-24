@@ -67,7 +67,7 @@
                                     {% endfor %}
                                     <hr class="collapse edit_icon">
                                     <dd>{{ item.title }}
-                                        <a href="/subject/add_item/{{ dropdown.id }}"><img
+                                        <a href="/subject/add_item/{{ dropdown.id }}/{{ subject.id }}"><img
                                                 src="https://img.icons8.com/flat_round/20/000000/plus.png"
                                                 class="py-1  collapse edit_icon " /></a>
                                     </dd>
@@ -89,13 +89,13 @@
                         <hr>
                     </div>
                     <a class="col-12 p-0 d-flex justify-content-center low-opacity"
-                        href="/subject/add_attribute/{{ section.id }}">
+                        href="/subject/add_attribute/{{ section.id }}/{{subject.id}}">
                         <img src="https://img.icons8.com/flat_round/25/000000/plus.png" class="py-2 add-icon collapse edit_icon" />
                     </a>
                 </div>
             </div>
             {% endfor %}
-            <div class="col-12 col-md-6 col-lg-4 p-0 p-md-2 ">
+            <div class="col-12 col-md-6 col-lg-4 p-0 p-md-2 collapse edit_icon">
                 <a class="row m-0 p-1 secondary-background wobble-onload low-opacity" id="frontend-section"
                     href="/subject/add_section/{{ subject.id }}">
                     <div class="col-12 d-flex justify-content-center">
