@@ -1,15 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="form-conatiner">
-    
-    <div class="form-wrapper">
-        <h4 class="text-dark">Add Subject</h4>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ subjectForm }}
-            <button type="submit" class="btn btn-success">Add</button>
-        </form>
+
+<img src="{{ MEDIA_URL }}background/notes_background.png" class="background-image">
+
+<div class="page-move">
+    <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
+
+        <a href="{% url 'menu' %}" class="btn btn-danger mt-2 ml-2">Back</a>
+
+        <div class="form-conatiner">
+            <div class="form-wrapper">
+                <h4 class="text-dark">Add Subject</h4>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ subjectForm }}
+                    <button type="submit" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 {% endblock %}

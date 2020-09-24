@@ -5,18 +5,20 @@
 
 <img src="{{ MEDIA_URL }}background/notes_background.png" class="background-image">
 
+<a href="{% url 'menu' %}"></a>
+
 <div class="page-move">
     <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
         <div class="d-flex justify-content-between">
-            <div></div>
-            <div class="pl-5">
-                <h2 class="text-center pt-4">Menu</h2>
-                <h6 class="text-secondary text-center">Subjects</h6>
-            </div>
-            <div class="pr-3 pt-3 clickable">
+            <div class="pl-2 pt-2 clickable">
                 <img src="https://img.icons8.com/ios/30/ffffff/user-male-circle.png" class="d-block mx-auto"/>
                 <small class="text-white">{{ user.username }}</small>
             </div>
+            <div class="pr-3">
+                <h2 class="text-center pt-4">Menu</h2>
+                <h6 class="text-secondary text-center">Subjects</h6>
+            </div>
+            <img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" style="height:25px;" data-toggle="collapse" href=".edit_icon" class="mt-2 mr-2 clickable"/>
         </div>
         
         <div class="row m-0 p-0 justify-content-center">
@@ -29,16 +31,16 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ subject.title }}</h5>
                         <p class="card-text text-secondary">{{ subject.information }}</p>
-                        <div class="d-flex justify-content-between align-items-end">
-                            <a class="" href="/subject/edit_subject/{{ subject.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
-                            <a class="btn btn-dark float-right" href="/subject/subject/{{subject.id}}">Go to</a>
+                        <div class="d-flex align-items-end">
+                            <a class="collapse edit_icon float-left" href="/subject/edit_subject/{{ subject.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
+                            <a class="btn btn-dark ml-auto" href="/subject/subject/{{subject.id}}">Go to</a>
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            <div class="col-12 col-md-6 col-lg-3  m-0 p-0 d-flex justify-content-center my-3 p-1 p-md-3">
-                <a class="card p-1 full-width-card low-opacity d-flex justify-content-center align-items-center" style="width: 18rem;" href="{% url 'add_subject' %}">
+            <div class="col-12 col-md-6 col-lg-3  m-0 p-0 my-3 p-1 p-md-3 collapse edit_icon">
+                <a class="card p-1 full-width-card low-opacity d-flex justify-content-center align-items-center " style="width: 18rem;" href="{% url 'add_subject' %}">
                     <img src="https://img.icons8.com/flat_round/35/000000/plus.png" class="py-2 add-icon"/>
                 </a>
             </div>
