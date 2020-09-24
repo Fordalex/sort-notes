@@ -76,11 +76,5 @@ class itemForm(forms.ModelForm):
                     'class' : 'container-fluid form-control',
                     'placeholder': 'www.please_copy_link.com',
                     }
-            ),
-            'model' : forms.TextInput(
-                attrs = {
-                    'class' : 'd-block',
-                    'type': 'checkbox'
-                    }
-            ),
+            )
         }

@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Subject, Section, Attribute, DropDown, Item
 from .forms import subjectForm, sectionForm, attributeForm, dropdownForm, itemForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def subject(request, pk):
 
     subject = Subject.objects.get(pk=pk)
@@ -13,6 +15,7 @@ def subject(request, pk):
 
     return render(request, 'subject/subject.html', context)
 
+@login_required
 def edit_subject(request):
 
     if request.method == "POST":
@@ -27,6 +30,7 @@ def edit_subject(request):
 
     return render(request, 'subject/edit_subject.html', context)
 
+@login_required
 def edit_section(request, pk):
 
     subject = Subject.objects.get(pk=pk)
@@ -47,6 +51,7 @@ def edit_section(request, pk):
 
     return render(request, 'subject/edit_section.html', context)
 
+@login_required
 def edit_attribute(request, pk):
 
     section = Section.objects.get(pk=pk)
@@ -66,6 +71,7 @@ def edit_attribute(request, pk):
 
     return render(request, 'subject/edit_attribute.html', context)
 
+@login_required
 def edit_dropdown(request, attribute_pk, subject_pk):
 
     attribute = Attribute.objects.get(pk=attribute_pk)
@@ -85,6 +91,7 @@ def edit_dropdown(request, attribute_pk, subject_pk):
 
     return render(request, 'subject/edit_dropdown.html', context)
 
+@login_required
 def edit_item(request, pk):
 
     dropdown = DropDown.objects.get(pk=pk)
