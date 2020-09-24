@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="form-conatiner">
-    
     <div class="form-wrapper">
-        <h4 class="text-dark">Add Subject</h4>
-        <form method="POST">
+        <h4 class="text-dark">Edit Subject</h4>
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ subjectForm }}
-            <button type="submit" class="btn btn-success">Add</button>
+            <label>Title</label>
+            <input value="{{subject.title}}" class="form-control" name="title">
+            <label>Information</label>
+            <input value="{{subject.information}}" class="form-control" name="information">
+            <label class="d-block">Change Image</label>
+            <input type="checkbox" name="change_image">
+            <label class="d-block">Image</label>
+            <input type="file" value="{{subject.image}}" name="image">
+            <button type="submit" class="btn btn-success">Update</button>
         </form>
     </div>
 </div>
+
 {% endblock %}

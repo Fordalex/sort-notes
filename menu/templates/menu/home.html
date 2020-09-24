@@ -10,25 +10,26 @@
     <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
         <h2 class="text-center pt-4">Menu</h2>
         <h6 class="text-secondary text-center">Subjects</h6>
-        
         <div class="row m-0 p-0 justify-content-center">
             {% for subject in subjects %}
             <div class="col-12 col-md-6 col-lg-3  m-0 p-0 d-flex justify-content-center my-3 p-1 p-md-3">
                 <div class="card p-1 full-width-card" style="width: 18rem;">
-                    <a class="d-block ml-auto" href="/subject/edit_attribute/{{ section.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
                     {% if subject.image %}
-                    <img src="static/media/web_development.jpg" class="card-img-top" alt="...">
+                    <img src="{{ MEDIA_URL }}{{subject.image}}" class="card-img-top" alt="...">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ subject.title }}</h5>
-                        <p class="card-text">{{ subject.information }}</p>
-                        <a class="btn btn-dark float-right" href="/subject/subject/{{subject.id}}">Go to</a>
+                        <p class="card-text text-secondary">{{ subject.information }}</p>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <a class="" href="/subject/edit_subject/{{ subject.id }}"><img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
+                            <a class="btn btn-dark float-right" href="/subject/subject/{{subject.id}}">Go to</a>
+                        </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
             <div class="col-12 col-md-6 col-lg-3  m-0 p-0 d-flex justify-content-center my-3 p-1 p-md-3">
-                <a class="card p-1 full-width-card low-opacity d-flex justify-content-center align-items-center" style="width: 18rem;" href="{% url 'edit_subject' %}">
+                <a class="card p-1 full-width-card low-opacity d-flex justify-content-center align-items-center" style="width: 18rem;" href="{% url 'add_subject' %}">
                     <img src="https://img.icons8.com/flat_round/35/000000/plus.png" class="py-2 add-icon"/>
                 </a>
             </div>

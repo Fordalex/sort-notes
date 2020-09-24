@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Subject, Section, Attribute, DropDown, Item
 from .forms import subjectForm, sectionForm, attributeForm, dropdownForm, itemForm
 from django.contrib.auth.decorators import login_required
@@ -15,8 +15,10 @@ def subject(request, pk):
 
     return render(request, 'subject/subject.html', context)
 
+# Add data views
+
 @login_required
-def edit_subject(request):
+def add_subject(request):
 
     if request.method == "POST":
         form = subjectForm(request.POST)
@@ -28,10 +30,10 @@ def edit_subject(request):
         'subjectForm': subjectForm
     }
 
-    return render(request, 'subject/edit_subject.html', context)
+    return render(request, 'subject/add_subject.html', context)
 
 @login_required
-def edit_section(request, pk):
+def add_section(request, pk):
 
     subject = Subject.objects.get(pk=pk)
 
@@ -49,10 +51,10 @@ def edit_section(request, pk):
         'subject': subject,
     }
 
-    return render(request, 'subject/edit_section.html', context)
+    return render(request, 'subject/add_section.html', context)
 
 @login_required
-def edit_attribute(request, pk):
+def add_attribute(request, pk):
 
     section = Section.objects.get(pk=pk)
 
@@ -69,10 +71,10 @@ def edit_attribute(request, pk):
         'attributeForm': attributeForm
     }
 
-    return render(request, 'subject/edit_attribute.html', context)
+    return render(request, 'subject/add_attribute.html', context)
 
 @login_required
-def edit_dropdown(request, attribute_pk, subject_pk):
+def add_dropdown(request, attribute_pk, subject_pk):
 
     attribute = Attribute.objects.get(pk=attribute_pk)
 
@@ -89,10 +91,10 @@ def edit_dropdown(request, attribute_pk, subject_pk):
         'dropdownForm': dropdownForm
     }
 
-    return render(request, 'subject/edit_dropdown.html', context)
+    return render(request, 'subject/add_dropdown.html', context)
 
 @login_required
-def edit_item(request, pk):
+def add_item(request, pk):
 
     dropdown = DropDown.objects.get(pk=pk)
 
@@ -109,4 +111,32 @@ def edit_item(request, pk):
         'itemForm': itemForm
     }
 
-    return render(request, 'subject/edit_item.html', context)
+    return render(request, 'subject/add_item.html', context)
+
+# Edit data views
+
+@login_required
+def edit_subject(request, subject_pk):
+
+    subject = get_object_or_404(Subject, pk=subject_pk)
+
+    if request.method == "POST":
+        title = request.POST.get('title')
+        information = request.POST.get('information')
+        
+        subject.title = title
+        subject.information = information
+    
+        if request.POST.get('change_image'):
+            image = request.FILES.get('image')
+            subject.image = image
+
+        subject.save()
+
+        return redirect('menu')
+
+    context = {
+        'subject': subject
+    }
+
+    return render(request, 'subject/edit_subject.html', context)
