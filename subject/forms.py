@@ -70,7 +70,7 @@ class dropdownForm(forms.ModelForm):
 class itemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('title', 'website', 'model')
+        fields = ('title', 'website', 'modal')
         widgets = {
             'title' : forms.TextInput(
                 attrs = {
