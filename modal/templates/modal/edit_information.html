@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-conatiner">
+    <div class="form-wrapper">
+        
+        <h4 class="text-dark">Edit Information</h4>
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>Title</label>
+            <input type="input" name="title" value="{{ modal.title }}">
+            <label>Information</label>
+            <input type="input" name="title" value="{{ modal.information }}">
+            <button type="submit" class="btn btn-success container-fluid">Update</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

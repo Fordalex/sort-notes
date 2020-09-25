@@ -40,3 +40,13 @@ def add_information(request, subject_pk, item_pk):
     }
 
     return render(request, 'modal/add_information.html', context)
+
+def edit_information(request, pk):
+
+    modal = get_object_or_404(Modal, pk=pk)
+
+    context = {
+        'modal': modal,
+    }
+
+    return render(request, 'modal/edit_information.html', context)
