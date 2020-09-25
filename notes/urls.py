@@ -24,5 +24,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('subject/', include('subject.urls')),
     path('menu/', include('menu.urls')),
+    path('modal/', include('modal.urls')),
     path('', redirect_home)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   
