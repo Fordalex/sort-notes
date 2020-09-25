@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from modal.models import Modal
 
@@ -33,6 +34,13 @@ class Attribute(models.Model):
 class Section(models.Model):
     title = models.CharField(max_length=200)
     attribute = models.ManyToManyField(Attribute, blank=True)
+
+    @classmethod
+    def add_subject_section(request, subject):
+        section = form.save(commit=False)
+        section.save()
+        subject.section.add(section.id)
+        return redirect('subject', pk)
 
     def __str__(self):
         return self.title

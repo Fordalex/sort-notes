@@ -36,17 +36,16 @@ def add_subject(request):
 
 @login_required
 def add_section(request, pk):
+    """
+    Display section form and add data.
+    """
 
     subject = Subject.objects.get(pk=pk)
 
     if request.method == "POST":
         form = sectionForm(request.POST)
         if form.is_valid:
-            section = form.save(commit=False)
-            section.save()
-            subject.section.add(section.id)
-            
-            return redirect('subject', pk)
+            Section.add_subject_section(request, subject)
 
     context = {
         'sectionForm': sectionForm,
