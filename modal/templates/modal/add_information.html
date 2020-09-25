@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-conatiner">
+    <div class="form-wrapper">
+        <h4 class="text-dark">Add Information</h4>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ informationForm }}
+            <button type="submit" class="btn btn-success container-fluid">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
