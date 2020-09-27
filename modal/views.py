@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from subject.models import Subject, Item
 from .models import ModalSection
-from .form import informationForm
+from .form import informationForm, dataForm
 from .functions import convert_string_into_data_type
 
 # Create your views here.
@@ -43,6 +43,14 @@ def add_modal_section(request, subject_pk, item_pk):
     }
 
     return render(request, 'modal/add_modal_section.html', context)
+
+def add_data(request, section_pk, item_pk):
+
+    context = {
+        'dataForm': dataForm,
+    }
+
+    return render(request, 'modal/add_data.html', context)
 
 def edit_modal_section(request, pk):
 

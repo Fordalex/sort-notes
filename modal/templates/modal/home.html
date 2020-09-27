@@ -11,40 +11,50 @@
 
 
         <a href="/subject/subject/{{subject.id}}" class="btn btn-danger float-left mt-2">{{ subject.title }}</a>
-        <img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" class="float-right mr-2 mt-2 clickable" data-toggle="collapse" href=".edit_icon" />
-
+        <img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" class="float-right mr-2 mt-2 clickable"
+            data-toggle="collapse" href=".edit_icon" />
         <h2 class="text-center pt-4">{{ item.title }}</h2>
-
-        <div class="information-container">
-        {% for section in sections %}
-            <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_modal_section/{{ section.id }}"><img
-                src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
-            <h5 class="text-center">{{section.title }}</h5>
-            <p class="text-center text-seondary">{{section.information}}</p>
-            <hr>
-
-            
-
-            {% for data in section.data %}
-                {{ data.data_style }}
-                {% for item in data.data %}
-                    {{ item }}
+        <div class="row m-0">
+            {% for section in sections %}
+            <div class="col-12 col-md-6 p-2">
+                <div class="information-container">
+                    <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_modal_section/{{ section.id }}"><img
+                            src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
+                    <h5 class="text-center">{{section.title }}</h5>
+                    <p class="text-center text-seondary">{{section.information}}</p>
+                    <hr>
+                    {% for data in section.data %}
+                    <b>{{ data.data_style }}</b>
                     <br>
-                {% endfor %}
-                <br>
+                    <!-- displaying the data in differnt styles -->
+                    {% if data.data_style == 'List' %}
+                    <ol>
+                        {% for item in data.data %}
+                          <li>{{ item }}</li>
+                        {% endfor %}
+                    </ol>
+                    {% endif %}
+                    <br>
+                    {% endfor %}
+                    <div class="collapse edit_icon">
+                        <a href="/modal/add_data/{{ section.id }}/{{ item.id }}"><img
+                                src="https://img.icons8.com/flat_round/30/000000/plus.png"
+                                class="py-1 d-block mx-auto mt-3" /></a>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-            {% if not forloop.last %}
-                <hr>
-            {% endif %}
-       {% endfor %}
         </div>
-
-        <div class="collapse edit_icon">
-            <a href="/modal/add_modal_section/{{ subject.id }}/{{ item.id }}"><img
-                src="https://img.icons8.com/flat_round/30/000000/plus.png"
-                class="py-1  collapse edit_icon d-block mx-auto mt-3" /></a>
+        <div class="row m-0 p-0">
+            <div class="col-12 col-md-6 p-2">
+                <div class="collapse edit_icon low-opacity">
+                    <a href="/modal/add_modal_section/{{ subject.id }}/{{ item.id }}"><img
+                            src="https://img.icons8.com/flat_round/30/000000/plus.png"
+                            class="py-1 collapse edit_icon d-block mx-auto mt-3" /></a>
+                </div>
+            </div>
         </div>
-       
+        
     </div>
 </div>
 {% endblock %}

@@ -20,6 +20,7 @@ def convert_string_into_data_type(sections):
             'title': section.title,
             'information': section.information,
             'data': section_data,
+            'id': section.id,
             
         }
         sections_list.append(section_dict)
