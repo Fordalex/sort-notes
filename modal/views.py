@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from subject.models import Subject, Item
-from .models import Modal
+from .models import ModalSection
 from .form import informationForm
+from .functions import convert_string_into_data_type
 
 # Create your views here.
 def modal(request, subject_pk, item_pk):
@@ -9,10 +10,12 @@ def modal(request, subject_pk, item_pk):
     item = get_object_or_404(Item, pk=item_pk)
     subject = get_object_or_404(Subject, pk=subject_pk)
     quick_buttons = item.modal.all()
+    sections = convert_string_into_data_type(item.modal.all())
 
     context = {
         'item': item,
         'subject': subject,
+        'sections': sections,
     }
 
     return render(request, 'modal/home.html', context)
@@ -43,7 +46,7 @@ def add_modal_section(request, subject_pk, item_pk):
 
 def edit_modal_section(request, pk):
 
-    modal = get_object_or_404(Modal, pk=pk)
+    modal = get_object_or_404(ModalSection, pk=pk)
 
     context = {
         'modal': modal,

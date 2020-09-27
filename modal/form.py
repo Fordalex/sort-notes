@@ -1,9 +1,9 @@
 from django import forms
-from .models import Modal
+from .models import ModalSection
 
 class informationForm(forms.ModelForm):
     class Meta:
-        model = Modal
+        model = ModalSection
         fields = ('title', 'information')
         widgets = {
             'title' : forms.TextInput(

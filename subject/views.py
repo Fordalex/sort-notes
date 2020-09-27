@@ -43,9 +43,8 @@ def add_section(request, pk):
     subject = Subject.objects.get(pk=pk)
 
     if request.method == "POST":
-        form = sectionForm(request.POST)
-        if form.is_valid:
-            Section.add_subject_section(request, subject)
+        Section.add_subject_section(request, sectionForm, subject)
+        return redirect('subject', pk)
 
     context = {
         'sectionForm': sectionForm,
