@@ -16,9 +16,13 @@
         <h2 class="text-center pt-4">{{ item.title }}</h2>
 
         <div class="information-container">
-        {% for data in item.modal.all %}
-        <h5>{{data.title}}</h5>
-        <p>{{data.information}}</p>
+        {% for section in item.modal.all %}
+        <h5 class="text-center">{{section.title}}</h5>
+        <p class="text-center text-seondary">{{section.information}}</p>
+        <hr>
+        {% for data in section.modal_data.all %}
+            {{data}}
+        {% endfor %}
         {% if not forloop.last %}
             <hr>
         {% endif %}
@@ -26,7 +30,7 @@
         </div>
 
         <div class="collapse edit_icon">
-            <a href="/modal/add_information/{{ subject.id }}/{{ item.id }}"><img
+            <a href="/modal/add_modal_section/{{ subject.id }}/{{ item.id }}"><img
                 src="https://img.icons8.com/flat_round/30/000000/plus.png"
                 class="py-1  collapse edit_icon d-block mx-auto mt-3" /></a>
         </div>

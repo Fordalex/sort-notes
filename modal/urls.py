@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('<subject_pk>/<item_pk>', views.modal, name="modal"),
     # add urls
-    path('add_information/<subject_pk>/<item_pk>', views.add_information, name="add_information"),
+    path('add_modal_section/<subject_pk>/<item_pk>', views.add_modal_section, name="add_modal_section"),
     # Edit urls
-    path('edit_information/<item_pk>', views.edit_information, name="edit_information")
+    path('edit_modal_section/<item_pk>', views.edit_modal_section, name="edit_modal_section")
 ]

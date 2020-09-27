@@ -17,7 +17,7 @@ def modal(request, subject_pk, item_pk):
 
     return render(request, 'modal/home.html', context)
 
-def add_information(request, subject_pk, item_pk):
+def add_modal_section(request, subject_pk, item_pk):
 
     subject = get_object_or_404(Subject, pk=subject_pk)
     item = get_object_or_404(Item, pk=item_pk)
@@ -39,9 +39,9 @@ def add_information(request, subject_pk, item_pk):
          'informationForm': informationForm,
     }
 
-    return render(request, 'modal/add_information.html', context)
+    return render(request, 'modal/add_modal_section.html', context)
 
-def edit_information(request, pk):
+def edit_modal_section(request, pk):
 
     modal = get_object_or_404(Modal, pk=pk)
 
@@ -49,4 +49,4 @@ def edit_information(request, pk):
         'modal': modal,
     }
 
-    return render(request, 'modal/edit_information.html', context)
+    return render(request, 'modal/edit_modal_section.html', context)
