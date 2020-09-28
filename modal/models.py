@@ -7,12 +7,14 @@ class ModalData(models.Model):
     data = models.CharField(max_length=500)
 
     @classmethod
-    def add_modal_data(cls, request, form, section):
-        add_data_form = form(request.POST)
-        if add_data_form.is_valid():
-            data = add_data_form.save(commit=False)
-            data.save()
-            section.modal_data.add(data)
+    def add_modal_data(cls, request, section, data):
+        data_object = cls(
+            title = request.POST.get('title'),
+            data_style = request.POST.get('data_style'),
+            data = data,
+        )
+        data_object.save()
+        section.modal_data.add(data_object)
 
     def __str__(self):
         return self.title

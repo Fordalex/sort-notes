@@ -11,6 +11,7 @@ def convert_string_into_data_type(sections):
                 data_json = json.loads(data.data)
             except:
                 data_json = data.data
+            print(type(data_json))
 
             data_dict = {
                 'data': data_json,
@@ -30,3 +31,21 @@ def convert_string_into_data_type(sections):
         sections_list.append(section_dict)
 
     return sections_list
+
+def format_data_for_database(request):
+    
+    data_style = request.POST.get('data_style')
+
+    if data_style == 'List': 
+        data_list = []
+        item_count = 1
+        while True:
+            input_name = f'item-{item_count}'
+            data_item = request.POST.get(input_name)
+            if not data_item:
+                break
+            data_list.append(data_item)
+            item_count += 1
+        data = str(data_list).replace("'", '"')
+
+    return str(data)

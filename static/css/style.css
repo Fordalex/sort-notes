@@ -532,10 +532,8 @@ span {
 
 .form-conatiner {
     padding-top: 25px;
-    height: 60vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .form-wrapper {
