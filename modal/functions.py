@@ -7,7 +7,10 @@ def convert_string_into_data_type(sections):
     for section in sections:
         section_data = []
         for data in section.modal_data.all():
-            data_json = json.loads(data.data)
+            try: 
+                data_json = json.loads(data.data)
+            except:
+                data_json = data.data
 
             data_dict = {
                 'data': data_json,

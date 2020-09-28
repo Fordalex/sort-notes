@@ -29,16 +29,23 @@
                     <div class="collapse" id="dropdown-{{section.id}}">
                         <hr>
                         {% for data in section.data %}
+                        <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_modal_section/{{ data.id }}"><img
+                            src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
+                        <!-- displaying the data in differnt styles -->
+                        <!-- list -->
+                        {% if data.data_style == 'List' %}
                         <b>{{ data.title }}</b>
                         <br>
-                        <!-- displaying the data in differnt styles -->
-                        {% if data.data_style == 'List' %}
                         <ol>
                             {% for item in data.data %}
                               <li>{{ item }}</li>
                             {% endfor %}
                         </ol>
+                         <!-- definition -->
+                        {% elif data.data_style == 'Definition' %}
+                        <p><b>{{ data.title }}</b> --- {{ data.data }}</p>
                         {% endif %}
+
                         {% if not forloop.last %}
                         <hr>
                         {% endif %}
