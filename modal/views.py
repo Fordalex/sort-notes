@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from subject.models import Subject, Item
-from .models import ModalSection
+from .models import ModalSection, ModalData
 from .form import informationForm, dataForm
 from .functions import convert_string_into_data_type
 
@@ -44,8 +44,16 @@ def add_modal_section(request, subject_pk, item_pk):
 
     return render(request, 'modal/add_modal_section.html', context)
 
-def add_data(request, section_pk, item_pk):
+def add_data(request, section_pk, item_pk, subject_pk):
 
+    section = get_object_or_404(ModalSection, pk=section_pk)
+    subject = get_object_or_404(Subject, pk=subject_pk)
+    item = get_object_or_404(Item, pk=item_pk)
+
+    if request.method == "POST":
+        ModalData.add_modal_data(request, dataForm, section)
+        return redirect('modal', subject.id, item.id)
+        
     context = {
         'dataForm': dataForm,
     }

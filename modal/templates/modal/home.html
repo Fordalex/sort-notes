@@ -16,37 +16,45 @@
         <h2 class="text-center pt-4">{{ item.title }}</h2>
         <div class="row m-0">
             {% for section in sections %}
-            <div class="col-12 col-md-6 p-2">
-                <div class="information-container">
+            <div class="col-12 p-2 ">
+                <div class="information-container ">
                     <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_modal_section/{{ section.id }}"><img
                             src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
-                    <h5 class="text-center">{{section.title }}</h5>
-                    <p class="text-center text-seondary">{{section.information}}</p>
-                    <hr>
-                    {% for data in section.data %}
-                    <b>{{ data.data_style }}</b>
-                    <br>
-                    <!-- displaying the data in differnt styles -->
-                    {% if data.data_style == 'List' %}
-                    <ol>
-                        {% for item in data.data %}
-                          <li>{{ item }}</li>
+                            <img src="{{ dropdown.image_src }}" class="mr-2 float-right" />{{ dropdown.title }} <i
+                            class="far fa-plus-square ml-2 small-icon front-plus " data-toggle="collapse"
+                            href="#dropdown-{{section.id}}"></i> 
+                            <h5 class="text-start m-0">{{section.title }}</h5>
+                    <small class="text-center text-seondary">{{section.information}}</small>
+                    
+                    <div class="collapse" id="dropdown-{{section.id}}">
+                        <hr>
+                        {% for data in section.data %}
+                        <b>{{ data.title }}</b>
+                        <br>
+                        <!-- displaying the data in differnt styles -->
+                        {% if data.data_style == 'List' %}
+                        <ol>
+                            {% for item in data.data %}
+                              <li>{{ item }}</li>
+                            {% endfor %}
+                        </ol>
+                        {% endif %}
+                        {% if not forloop.last %}
+                        <hr>
+                        {% endif %}
                         {% endfor %}
-                    </ol>
-                    {% endif %}
-                    <br>
-                    {% endfor %}
-                    <div class="collapse edit_icon">
-                        <a href="/modal/add_data/{{ section.id }}/{{ item.id }}"><img
-                                src="https://img.icons8.com/flat_round/30/000000/plus.png"
-                                class="py-1 d-block mx-auto mt-3" /></a>
+                        <div class="collapse edit_icon">
+                            <a href="/modal/add_data/{{ section.id }}/{{ item.id }}/{{subject.id}}"><img
+                                    src="https://img.icons8.com/flat_round/30/000000/plus.png"
+                                    class="py-1 d-block mx-auto mt-3" /></a>
+                        </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
         <div class="row m-0 p-0">
-            <div class="col-12 col-md-6 p-2">
+            <div class="col-12 p-2">
                 <div class="collapse edit_icon low-opacity">
                     <a href="/modal/add_modal_section/{{ subject.id }}/{{ item.id }}"><img
                             src="https://img.icons8.com/flat_round/30/000000/plus.png"

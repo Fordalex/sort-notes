@@ -12,6 +12,7 @@ def convert_string_into_data_type(sections):
             data_dict = {
                 'data': data_json,
                 'data_style': data.data_style,
+                'title': data.title,
             }
             section_data.append(data_dict)
 
