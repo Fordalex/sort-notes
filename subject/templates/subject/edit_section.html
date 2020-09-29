@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/subject/subject/{{subject.id}}">Back</a>
+
+<div class="form-conatiner">
+    <div class="form-wrapper">
+        <h4>Edit Section</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Title</label>
+            <input type="text" name="title" class="form-control" value="{{ section.title }}">
+            <button type="submit" class="btn btn-success container-fluid">Update</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

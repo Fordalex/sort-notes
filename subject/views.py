@@ -142,6 +142,24 @@ def edit_subject(request, subject_pk):
     return render(request, 'subject/edit_subject.html', context)
 
 @login_required
+def edit_section(request, section_pk, subject_pk):
+
+    section = get_object_or_404(Section, pk=section_pk)
+    subject = get_object_or_404(Subject, pk=subject_pk)
+
+    if request.method == "POST":
+        section.title = request.POST.get('title')
+        section.save()
+
+        return redirect('subject', subject_pk)
+
+    context = {
+        'section': section
+    }
+
+    return render(request, 'subject/edit_section.html', context)
+
+@login_required
 def edit_dropdown(request, dropdown_pk, subject_pk):
 
     dropdown = get_object_or_404(DropDown, pk=dropdown_pk)
