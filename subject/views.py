@@ -154,7 +154,8 @@ def edit_section(request, section_pk, subject_pk):
         return redirect('subject', subject_pk)
 
     context = {
-        'section': section
+        'section': section,
+        'subject': subject,
     }
 
     return render(request, 'subject/edit_section.html', context)
@@ -190,10 +191,13 @@ def remove_data(request, data_type ,pk, subject_pk):
     if data_type == 'subject':
         subject = get_object_or_404(Subject, pk=pk)
         subject.delete()
-
-    if data_type == 'dropdown':
+    elif data_type == 'dropdown':
         dropdown = get_object_or_404(DropDown, pk=pk)
         dropdown.delete()
+        return redirect('subject', subject_pk)
+    elif data_type == 'section':
+        section = get_object_or_404(Section, pk=pk)
+        section.delete()
         return redirect('subject', subject_pk)
 
     return redirect('menu')
