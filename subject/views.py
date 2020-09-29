@@ -161,6 +161,25 @@ def edit_section(request, section_pk, subject_pk):
     return render(request, 'subject/edit_section.html', context)
 
 @login_required
+def edit_attribute(request, attribute_pk, subject_pk):
+
+    attribute = get_object_or_404(Attribute, pk=attribute_pk)
+    subject = get_object_or_404(Subject, pk=subject_pk)
+
+    if request.method == "POST":
+        attribute.title = request.POST.get('title')
+        attribute.save()
+
+        return redirect('subject', subject_pk)
+
+    context = {
+        'attribute': attribute,
+        'subject': subject,
+    }
+
+    return render(request, 'subject/edit_attribute.html', context)
+
+@login_required
 def edit_dropdown(request, dropdown_pk, subject_pk):
 
     dropdown = get_object_or_404(DropDown, pk=dropdown_pk)
@@ -198,6 +217,10 @@ def remove_data(request, data_type ,pk, subject_pk):
     elif data_type == 'section':
         section = get_object_or_404(Section, pk=pk)
         section.delete()
+        return redirect('subject', subject_pk)
+    elif data_type == 'attribute':
+        attribute = get_object_or_404(Attribute, pk=pk)
+        attribute.delete()
         return redirect('subject', subject_pk)
 
     return redirect('menu')

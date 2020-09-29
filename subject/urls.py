@@ -13,6 +13,7 @@ urlpatterns = [
     # edit urls
     path('edit_subject/<subject_pk>', views.edit_subject, name="edit_subject"),
     path('edit_section/<section_pk>/<subject_pk>', views.edit_section, name="edit_section"),
+    path('edit_attribute/<attribute_pk>/<subject_pk>', views.edit_attribute, name="edit_attribute"),
     path('edit_dropdown/<dropdown_pk>/<subject_pk>', views.edit_dropdown, name="edit_dropdown"),
 
     # remove data

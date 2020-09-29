@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-conatiner">
+    <div class="form-wrapper">
+        <h4 class="text-dark">Edit Attribute</h4>
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>Title</label>
+            <input type="text" value="{{ attribute.title }}" name="title" class="form-control">
+            <button type="submit" class="btn btn-success container-fluid">Update</button>
+        </form>
+    </div>
+    <div class="form-wrapper ml-3">
+        <h4>Remove Attribute</h4>
+        <a href="/subject/remove_data/attribute/{{attribute.id}}/{{ subject.id }}"
+            class="btn btn-danger container-fluid">Remove</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -9,4 +9,5 @@ urlpatterns = [
     path('add_data/<section_pk>/<item_pk>/<subject_pk>', views.add_data, name="add_data"),
     # Edit urls
     path('edit_modal_section/<item_pk>', views.edit_modal_section, name="edit_modal_section")
+
 ]

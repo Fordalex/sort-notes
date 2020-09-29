@@ -29,7 +29,7 @@
                     {% for attribute in section.attribute.all %}
                     <div class="col-12 p-0 d-flex justify-content-between">
                         <h4 class="mb-3">{{ attribute.title }}</h4>
-                        <a class="float-right mr-3 collapse edit_icon" href="/subject/add_dropdown/{{ attribute.id }}"><img
+                        <a class="float-right mr-3 collapse edit_icon" href="/subject/edit_attribute/{{ attribute.id }}/{{ subject.id }}"><img
                                 src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
                     </div>
                     <div class="col-12 px-0 px-lg-2">
