@@ -9,3 +9,8 @@ Creating a easy to create and sort platform for my own notes but also so other u
 #### Click and drag
 
 I need to add a click and drag feature to allow the user to rearrange their notes.
+
+
+## Bugs
+
+When adding data to the modal data the user can submit the form with no 'Note Style' selected. I'll need to use js to fix this.

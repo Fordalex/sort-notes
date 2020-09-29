@@ -45,6 +45,8 @@
                         </ol>
                          <!-- definition -->
                         {% elif data.data_style == 'Definition' %}
+                        <small>{{ data.data_style }}</small>
+                        <br>
                         <p><b>{{ data.title }}</b> --- {{ data.data }}</p>
                         {% endif %}
 

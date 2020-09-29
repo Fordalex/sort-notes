@@ -47,5 +47,7 @@ def format_data_for_database(request):
             data_list.append(data_item)
             item_count += 1
         data = str(data_list).replace("'", '"')
+    elif data_style == 'Definition':
+        data = request.POST.get('definition')
 
     return str(data)
