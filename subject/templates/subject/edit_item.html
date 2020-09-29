@@ -3,19 +3,24 @@
 {% block content %}
 <div class="form-conatiner">
     <div class="form-wrapper">
-<h4 class="text-dark">Edit Item</h4>
+        <h4 class="text-dark">Edit Item</h4>
 
-<form method="POST">
-    {% csrf_token %}
-    <label>Title</label>
-    <input class="form-control" name="title" value="{{ item.title }}">
-    <label>Website</label>
-    <input class="form-control" name="website" value="{{ item.website }}">
-    <label>Modal</label>
-    <input type="checkbox" name="modal" value="{{ item.modal }}">
-    <button type="submit" class="btn btn-success d-block container-fluid">Update</button>
-</form>
-</div>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Title</label>
+            <input class="form-control" name="title" value="{{ item.title }}">
+            <label>Website</label>
+            <input class="form-control" name="website" value="{{ item.website }}">
+            <label>Modal</label>
+            <input type="checkbox" name="modal" value="{{ item.modal }}">
+            <button type="submit" class="btn btn-success d-block container-fluid">Update</button>
+        </form>
+    </div>
+    <div class="form-wrapper ml-3">
+        <h4>Remove Item</h4>
+        <a href="/subject/remove_data/item/{{item.id}}/{{ subject.id }}"
+            class="btn btn-danger container-fluid">Remove</a>
+    </div>
 </div>
 
 {% endblock %}

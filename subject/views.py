@@ -243,5 +243,9 @@ def remove_data(request, data_type ,pk, subject_pk):
         attribute = get_object_or_404(Attribute, pk=pk)
         attribute.delete()
         return redirect('subject', subject_pk)
+    elif data_type == 'item':
+        item = get_object_or_404(Item, pk=pk)
+        item.delete()
+        return redirect('subject', subject_pk)
 
     return redirect('menu')

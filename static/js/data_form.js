@@ -8,6 +8,8 @@ $(document).ready(function() {
 
         if ($('#data_style').val() == 'List') {
             var listForm = `
+                <label>Title</label>
+                <input name="title" class="form-control">
                 <label>Item ${listCount}</label>
                 <input name="item-${listCount}" class="form-control">
                 `;
@@ -16,6 +18,8 @@ $(document).ready(function() {
             $('#form-buttons').html('<div class="btn btn-warning container-fluid mt-3" id="add-item">Add</div>');
         } else if ($('#data_style').val() == 'Definition') {
             var dataForm = `
+                <label>Title</label>
+                <input name="title" class="form-control">
                 <label>Definition</label>
                 <input name="definition" class="form-control">
                 `;
