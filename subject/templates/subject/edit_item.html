@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-conatiner">
+    <div class="form-wrapper">
+<h4 class="text-dark">Edit Item</h4>
+
+<form method="POST">
+    {% csrf_token %}
+    <label>Title</label>
+    <input class="form-control" name="title" value="{{ item.title }}">
+    <label>Website</label>
+    <input class="form-control" name="website" value="{{ item.website }}">
+    <label>Modal</label>
+    <input type="checkbox" name="modal" value="{{ item.modal }}">
+    <button type="submit" class="btn btn-success d-block container-fluid">Update</button>
+</form>
+</div>
+</div>
+
+{% endblock %}

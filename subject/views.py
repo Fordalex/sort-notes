@@ -203,6 +203,27 @@ def edit_dropdown(request, dropdown_pk, subject_pk):
 
     return render(request, 'subject/edit_dropdown.html', context)
 
+    
+@login_required
+def edit_item(request, item_pk, subject_pk):
+
+    item = get_object_or_404(Item, pk=item_pk)
+    subject = get_object_or_404(Subject, pk=subject_pk)
+
+    if request.method == "POST":
+        item.title = request.POST.get('title')
+        item.website = request.POST.get('website')
+        item.save()
+
+        return redirect('subject', subject_pk)
+
+    context = {
+        'item': item,
+        'subject': subject,
+    }
+
+    return render(request, 'subject/edit_item.html', context)
+
 # Remove data
 
 def remove_data(request, data_type ,pk, subject_pk):
