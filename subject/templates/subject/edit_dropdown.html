@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -11,12 +12,12 @@
         <div class="form-conatiner">
             <div class="form-wrapper">
                 <h4 class="text-dark">Edit Dropdown</h4>
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" id="dropdown-form">
                     {% csrf_token %}
                     <label>Title</label>
                     <input value="{{dropdown.title}}" class="form-control" name="title">
                     <label>Icon</label>
-                    <input value="{{dropdown.icon}}" class="form-control" name="icon">
+                    <input value="{{dropdown.icon}}" class="form-control" name="icon" id="icon-element">
                     <a class="btn btn-warning container-fluid mt-3" target="_blank" href="https://icons8.com/">Icons</a>
                     <button type="submit" class="btn btn-success container-fluid">Update</button>
                 </form>
@@ -29,5 +30,11 @@
 
     </div>
 </div>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/icon_size.js' %}"></script>
 
 {% endblock %}
