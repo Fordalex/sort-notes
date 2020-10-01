@@ -25,7 +25,18 @@ $(document).ready(function() {
                 `;
 
             $('#form-container').html(dataForm);
-        } 
+        } else if ($('#data_style').val() == '3D Print') {
+            var dataForm = `
+                <label>Title</label>
+                <input name="title" class="form-control">
+                <label>Print</label>
+                <input name="image" type="file" class="form-control">
+                <label>Settings</label>
+                <input class="form-control">
+                `;
+
+            $('#form-container').html(dataForm);
+        }
 
     });
     $(document).on('click', '#add-item',function() {

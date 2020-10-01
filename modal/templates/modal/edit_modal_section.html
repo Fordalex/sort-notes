@@ -3,19 +3,27 @@
 {% block content %}
 <div class="form-conatiner">
     <div class="form-wrapper">
-        
+        {% if section %}
         <h4 class="text-dark">Edit Section</h4>
+        {% else %}
+        <h4 class="text-dark">Add Section</h4>
+        {% endif %}
 
         <form method="POST">
             {% csrf_token %}
             <label>Title</label>
-            <input type="input" name="title" value="{{ modal.title }}">
+            <input type="text" class="form-control" name="{{ informationForm.title.name }}" value="{{ section.title }}">
             <label>Information</label>
-            <input type="input" name="title" value="{{ modal.information }}">
-            <button type="submit" class="btn btn-success container-fluid">Update</button>
+            <input type="text" class="form-control" name="{{ informationForm.information.name }}" value="{{ section.information }}">
+            <button type="submit" class="btn btn-success container-fluid">Submit</button>
         </form>
-
     </div>
+    {% if section %}
+    <div class="form-wrapper ml-3">
+        <h4>Remove Section</h4>
+        <a href="/modal/remove_data/modal_section/{{section.id}}/{{ subject.id }}/{{ item.id }}" class="btn btn-danger container-fluid">Remove</a>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}

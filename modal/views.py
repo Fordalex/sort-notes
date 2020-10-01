@@ -22,31 +22,42 @@ def modal(request, subject_pk, item_pk):
 
     return render(request, 'modal/home.html', context)
 
-def add_modal_section(request, subject_pk, item_pk):
+def edit_modal_section(request, subject_pk, item_pk, section_pk):
     """
     Add a section to the modal information.
     """
     subject = get_object_or_404(Subject, pk=subject_pk)
     item = get_object_or_404(Item, pk=item_pk)
+    updateSection = False
+    try:
+        section = get_object_or_404(ModalSection, pk=section_pk)
+        updateSection = True
+    except:
+        section = []
 
     if request.method == "POST":
-        information = informationForm(request.POST)
-        print(information)
-        if information.is_valid():
-            print('working')
-            information_form = information.save(commit=False)
-            information_form.save()
-            item.modal.add(information_form)
+        if updateSection:
+            section.title = request.POST.get('title')
+            section.information = request.POST.get('information')
+            section.save()
+        else:
+            information = informationForm(request.POST)
+            if information.is_valid():
+                information_form = information.save(commit=False)
+                information_form.save()
+                item.modal.add(information_form)
 
-            return redirect('modal', subject.id, item.id)
+        return redirect('modal', subject.id, item.id)
 
-    print('this shouldt be displayed.')
 
     context = {
          'informationForm': informationForm,
+         'subject': subject,
+         'section': section,
+         'item': item,
     }
 
-    return render(request, 'modal/add_modal_section.html', context)
+    return render(request, 'modal/edit_modal_section.html', context)
 
 def add_data(request, section_pk, item_pk, subject_pk):
     """
@@ -63,14 +74,15 @@ def add_data(request, section_pk, item_pk, subject_pk):
         
     return render(request, 'modal/add_data.html')
 
-def edit_modal_section(request, pk):
+def remove_data(request, data_type, data_pk, subject_pk, item_pk):
     """
-    Edit a modal section.
+    View to remove data from the database and return back to the modal view
     """
-    modal = get_object_or_404(ModalSection, pk=pk)
+    subject = get_object_or_404(Subject, pk=subject_pk)
+    item = get_object_or_404(Item, pk=item_pk)
 
-    context = {
-        'modal': modal,
-    }
+    if data_type == 'modal_section':
+        modalSection = get_object_or_404(ModalSection, pk=data_pk)
+        modalSection.delete()
 
-    return render(request, 'modal/edit_modal_section.html', context)
+    return redirect('modal', subject.id, item.id)

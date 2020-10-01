@@ -5,6 +5,7 @@ class ModalData(models.Model):
     title = models.CharField(max_length=200)
     data_style = models.CharField(max_length=200)
     data = models.CharField(max_length=500)
+    image = models.ImageField(null=True, blank=True)
 
     @classmethod
     def add_modal_data(cls, request, section, data):
