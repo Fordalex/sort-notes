@@ -16,7 +16,7 @@
         <h2 class="text-center pt-4">{{ item.title }}</h2>
         <div class="row m-0">
             {% for section in sections %}
-            <div class="col-12 p-2 ">
+            <div class="col-12 col-md-6 p-2">
                 <div class="information-container ">
                     <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_modal_section/{{ subject.id }}/{{ item.id }}/{{ section.id }}"><img
                             src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
@@ -25,56 +25,52 @@
                             href="#dropdown-{{section.id}}"></i> 
                             <h5 class="text-start m-0">{{section.title }}</h5>
                     <small class="text-center text-seondary">{{section.information}}</small>
-                    
                     <div class="collapse" id="dropdown-{{section.id}}">
                         <hr>
                         {% for data in section.data %}
-                        <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_data/{{ data.id }}/{{ section.id }}/{{ item.pk }}/{{ subject.id }}"><img
-                            src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
-                        <!-- displaying the data in differnt styles -->
-                        <!-- list -->
-                        {% if data.data_style == 'List' %}
-                        <h6>{{ data.title }}</h6>
-                        <br>
-                        <ol>
-                            {% for item in data.data %}
-                              <li>{{ item }}</li>
-                            {% endfor %}
-                        </ol>
-                         <!-- definition -->
-                        {% elif data.data_style == 'Definition' %}
-                        <p><b>{{ data.title }}</b> : {{ data.data }}</p>
-                        {% endif %}
-
-                        {% if not forloop.last %}
-                        <hr>
-                        <!-- 3d print -->
-                        {% elif data.data_style == '3D Print' %}
-
-                        <h6>{{ data.title }}</h6>
-                        <p class="m-0 p-0">{{ data.data.description }}</p>
-                        <img src="">
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <b>Layer Height</b>
-                                <br>
-                                <p class="m-0">{{ data.data.layer_height }}</p>
-                            </div>
-                            <div>
-                                <b>Density</b>
-                                <br>
-                                <p class="m-0">{{ data.data.density }}</p>
-                            </div>
-                            <div>
-                                <b>Print Length</b>
-                                <br>
-                                <p class="m-0">{{ data.data.print_length }}</p>
-                            </div>
-                           
+                            <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_data/{{ data.id }}/{{ section.id }}/{{ item.pk }}/{{ subject.id }}"><img
+                                src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
                             
-                        </div>
-
-                        {% endif %}
+                            <!-- displaying the data in differnt styles -->
+                            <!-- list -->
+                            {% if data.data_style == 'List' %}
+                            <h6>{{ data.title }}</h6>
+                            <br>
+                            <ol>
+                                {% for item in data.data %}
+                                <li>{{ item }}</li>
+                                {% endfor %}
+                            </ol>
+                            <!-- definition -->
+                            {% elif data.data_style == 'Definition' %}
+                            <p><b>{{ data.title }}</b> : {{ data.data }}</p>
+                            {% elif data.data_style == '3D Print' %}
+                            <!-- 3d print -->
+                            <h6>{{ data.title }}</h6>
+                            <p class="m-0 p-0">{{ data.data.description }}</p>
+                            <img src="{{ MEDIA_URL }}{{ data.image }}" width="100%" class="my-2" style="border-radius: 4px;">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <b>Layer Height</b>
+                                    <br>
+                                    <p class="m-0">{{ data.data.layer_height }}</p>
+                                </div>
+                                <div>
+                                    <b>Density</b>
+                                    <br>
+                                    <p class="m-0">{{ data.data.density }}</p>
+                                </div>
+                                <div>
+                                    <b>Print Length</b>
+                                    <br>
+                                    <p class="m-0">{{ data.data.print_length }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            {% if not forloop.last %}
+                            <hr>
+                            {% endif %}
                         {% endfor %}
                         <div class="collapse edit_icon">
                             <a href="/modal/edit_data/0/{{ section.id }}/{{ item.id }}/{{subject.id}}"><img

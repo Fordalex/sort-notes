@@ -17,6 +17,7 @@ def convert_string_into_data_type(sections):
                 'data': data_json,
                 'data_style': data.data_style,
                 'title': data.title,
+                'image': data.image,
                 'id': data.id,
             }
             section_data.append(data_dict)
@@ -55,10 +56,10 @@ def format_data_for_database(request):
     # 3d print
     elif data_style == '3D Print':
         data = {
-            'description': request.POST.get('description'),
-            'layer_height': request.POST.get('layer_height'),
-            'density': request.POST.get('density'),
-            'print_length': request.POST.get('print_length'),
+            "description": request.POST.get('description'),
+            "layer_height": request.POST.get('layer_height'),
+            "density": request.POST.get('density'),
+            "print_length": request.POST.get('print_length'),
         }
     data = str(data).replace("'", '"')
 

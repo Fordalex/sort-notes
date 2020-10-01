@@ -13,6 +13,7 @@ class ModalData(models.Model):
             title = request.POST.get('title'),
             data_style = request.POST.get('data_style'),
             data = data,
+            image = request.FILES.get('image'),
         )
         data_object.save()
         section.modal_data.add(data_object)
