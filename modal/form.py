@@ -4,7 +4,7 @@ from .models import ModalSection, ModalData
 class informationForm(forms.ModelForm):
     class Meta:
         model = ModalSection
-        fields = ('title', 'information')
+        fields = ('title', 'information', 'collapse')
         widgets = {
             'title' : forms.TextInput(
                 attrs = {

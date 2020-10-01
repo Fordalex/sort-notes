@@ -14,19 +14,28 @@
         <img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" class="float-right mr-2 mt-2 clickable"
             data-toggle="collapse" href=".edit_icon" />
         <h2 class="text-center pt-4">{{ item.title }}</h2>
-        <div class="row m-0">
+       
+        <div class="row m-0 justify-content-center">
             {% for section in sections %}
             <div class="col-12 col-md-6 p-2">
                 <div class="information-container ">
                     <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_modal_section/{{ subject.id }}/{{ item.id }}/{{ section.id }}"><img
                             src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
+                            {% if section.collapse %}
                             <img src="{{ dropdown.image_src }}" class="mr-2 float-right" />{{ dropdown.title }} <i
                             class="far fa-plus-square ml-2 small-icon front-plus " data-toggle="collapse"
                             href="#dropdown-{{section.id}}"></i> 
+                            {% endif %}
                             <h5 class="text-start m-0">{{section.title }}</h5>
                     <small class="text-center text-seondary">{{section.information}}</small>
+                    {% if section.collapse %}
                     <div class="collapse" id="dropdown-{{section.id}}">
+                    {% else %}
+                    <div>
+                    {% endif %}
+                        {% if section.collapse %}
                         <hr>
+                        {% endif %}
                         {% for data in section.data %}
                             <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_data/{{ data.id }}/{{ section.id }}/{{ item.pk }}/{{ subject.id }}"><img
                                 src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
@@ -82,7 +91,7 @@
             </div>
             {% endfor %}
         </div>
-        <div class="row m-0 p-0">
+        <div class="row m-0 p-0 justify-content-center">
             <div class="col-12 col-md-6 p-2">
                 <div class="collapse edit_icon low-opacity">
                     <a href="/modal/edit_modal_section/{{ subject.id }}/{{ item.id }}/0"><img

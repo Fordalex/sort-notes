@@ -23,8 +23,9 @@ class ModalData(models.Model):
 
 
 class ModalSection(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True)
     information = models.CharField(max_length=250, blank=True)
+    collapse = models.BooleanField(default=False)
     modal_data = models.ManyToManyField(ModalData, blank=True)
 
     def __str__(self):

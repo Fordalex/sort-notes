@@ -23,10 +23,10 @@ def convert_string_into_data_type(sections):
             section_data.append(data_dict)
 
         section_dict = {
-
             'title': section.title,
             'information': section.information,
             'data': section_data,
+            'collapse': section.collapse,
             'id': section.id,
             
         }

@@ -35,15 +35,22 @@ def edit_modal_section(request, subject_pk, item_pk, section_pk):
     except:
         section = []
 
+    print(request.POST)
+
     if request.method == "POST":
         if updateSection:
             section.title = request.POST.get('title')
             section.information = request.POST.get('information')
+            if request.POST.get('collapse'):
+                section.collapse = True
+            else:
+                section.collapse = False
             section.save()
         else:
             information = informationForm(request.POST)
             if information.is_valid():
                 information_form = information.save(commit=False)
+
                 information_form.save()
                 item.modal.add(information_form)
 
