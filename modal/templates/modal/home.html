@@ -29,12 +29,12 @@
                     <div class="collapse" id="dropdown-{{section.id}}">
                         <hr>
                         {% for data in section.data %}
-                        <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_modal_section/{{ data.id }}"><img
+                        <a class="float-left mr-3 collapse edit_icon" href="/modal/edit_data/{{ data.id }}/{{ section.id }}/{{ item.pk }}/{{ subject.id }}"><img
                             src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" /></a>
                         <!-- displaying the data in differnt styles -->
                         <!-- list -->
                         {% if data.data_style == 'List' %}
-                        <b>{{ data.title }}</b>
+                        <h6>{{ data.title }}</h6>
                         <br>
                         <ol>
                             {% for item in data.data %}
@@ -48,10 +48,36 @@
 
                         {% if not forloop.last %}
                         <hr>
+                        <!-- 3d print -->
+                        {% elif data.data_style == '3D Print' %}
+
+                        <h6>{{ data.title }}</h6>
+                        <p class="m-0 p-0">{{ data.data.description }}</p>
+                        <img src="">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <b>Layer Height</b>
+                                <br>
+                                <p class="m-0">{{ data.data.layer_height }}</p>
+                            </div>
+                            <div>
+                                <b>Density</b>
+                                <br>
+                                <p class="m-0">{{ data.data.density }}</p>
+                            </div>
+                            <div>
+                                <b>Print Length</b>
+                                <br>
+                                <p class="m-0">{{ data.data.print_length }}</p>
+                            </div>
+                           
+                            
+                        </div>
+
                         {% endif %}
                         {% endfor %}
                         <div class="collapse edit_icon">
-                            <a href="/modal/add_data/{{ section.id }}/{{ item.id }}/{{subject.id}}"><img
+                            <a href="/modal/edit_data/0/{{ section.id }}/{{ item.id }}/{{subject.id}}"><img
                                     src="https://img.icons8.com/flat_round/30/000000/plus.png"
                                     class="py-1 d-block mx-auto mt-3" /></a>
                         </div>

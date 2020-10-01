@@ -4,7 +4,11 @@
 {% block content %}
 <div class="form-conatiner">
     <div class="form-wrapper">
+        {% if modal_data %}
         <h4 class="text-dark">Add Data</h4>
+        [% else %]
+        <h4 class="text-dark">Edit Data</h4>
+        {% endif %}
 
         <form method="POST">
             {% csrf_token %}
@@ -20,6 +24,14 @@
             <input type="submit" class="btn btn-success container-fluid mt-3">
         </form>
     </div>
+
+    {% if modal_data %}
+    <div class="form-wrapper ml-3">
+        <h4>Remove Section</h4>
+        <a href="/modal/remove_data/modal_section/{{section.id}}/{{ subject.id }}/{{ item.id }}" class="btn btn-danger container-fluid">Remove</a>
+    </div>
+    {% endif %}
+
 </div>
 
 {% endblock %}

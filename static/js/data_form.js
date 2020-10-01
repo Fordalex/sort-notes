@@ -29,10 +29,24 @@ $(document).ready(function() {
             var dataForm = `
                 <label>Title</label>
                 <input name="title" class="form-control">
-                <label>Print</label>
-                <input name="image" type="file" class="form-control">
-                <label>Settings</label>
-                <input class="form-control">
+                <label>Description</label>
+                <input name="description" class="form-control">
+                <label class="d-block">Print</label>
+                <input name="image" type="file">
+                <div class="row m-0 p-0 mt-2">
+                    <div class="col-4 m-0 p-0">
+                        <label>Layer Height</label>
+                        <input name="layer_height" class="form-control">
+                    </div>
+                    <div class="col-4 m-0">
+                        <label>Density</label>
+                        <input name="density"  class="form-control">
+                    </div>
+                    <div class="col-4 m-0 p-0">
+                        <label>Print Length</label>
+                        <input name="print_length"  class="form-control">
+                    </div>
+                </div>
                 `;
 
             $('#form-container').html(dataForm);

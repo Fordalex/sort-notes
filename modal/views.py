@@ -59,20 +59,28 @@ def edit_modal_section(request, subject_pk, item_pk, section_pk):
 
     return render(request, 'modal/edit_modal_section.html', context)
 
-def add_data(request, section_pk, item_pk, subject_pk):
+def edit_data(request, modal_data_pk, section_pk, item_pk, subject_pk):
     """
-    Add data page with muliple forms.
+    Edit and add data page with muliple forms.
     """
     section = get_object_or_404(ModalSection, pk=section_pk)
     subject = get_object_or_404(Subject, pk=subject_pk)
     item = get_object_or_404(Item, pk=item_pk)
+    try:
+        modal_data = get_object_or_404(ModalData, pk=modal_data_pk)
+    except:
+        modal_data = []
 
     if request.method == "POST":
         data = format_data_for_database(request)
         ModalData.add_modal_data(request, section, data)
         return redirect('modal', subject.id, item.id)
+
+    context = {
+        'modal_data': modal_data,
+    }
         
-    return render(request, 'modal/add_data.html')
+    return render(request, 'modal/edit_data.html', context)
 
 def remove_data(request, data_type, data_pk, subject_pk, item_pk):
     """
