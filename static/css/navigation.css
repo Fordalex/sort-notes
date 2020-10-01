@@ -1,0 +1,19 @@
+.navigation {
+    width: 100vw;
+    height: 57px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #2c4f68;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid black 1px;
+    padding: 0px 5px;
+}
+
+.navigation-blank-space {
+    margin-top: 50px;
+}

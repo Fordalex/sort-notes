@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block nav %}
+<a href="{% url 'menu' %}"><img class="ml-2" src="https://img.icons8.com/material/24/ffffff/home--v5.png"/></a>
+<img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" class="float-right mr-2 clickable" data-toggle="collapse" href=".edit_icon" />
+{% endblock %}
+
 {% block content %}
 
 <img src="{{ MEDIA_URL }}background/notes_background.png" class="background-image">
@@ -8,10 +13,6 @@
 <div class="page-move">
 
     <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
-
-
-        <a href="{% url 'menu' %}" class="btn btn-danger float-left mt-2">Home</a>
-        <img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" class="float-right mr-2 mt-2 clickable" data-toggle="collapse" href=".edit_icon" />
 
         <h2 class="text-center pt-4">{{ subject.title }}</h2>
         <h6 class="text-secondary text-center pb-3">{{ subject.information }}</h6>

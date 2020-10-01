@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block nav %}
+<a href="/subject/{{subject.id}}" class="float-left ml-2"><img src="https://img.icons8.com/windows/32/ffffff/circled-left.png"/></a>
+<img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" class="float-right mr-2 clickable"
+data-toggle="collapse" href=".edit_icon" />
+{% endblock %}
+
 {% block content %}
 
 <img src="{{ MEDIA_URL }}background/notes_background.png" class="background-image">
@@ -10,9 +16,8 @@
     <div class="page-container px-0 px-md-2 pt-5 pt-lg-0">
 
 
-        <a href="/subject/{{subject.id}}" class="btn btn-danger float-left mt-2">{{ subject.title }}</a>
-        <img src="https://img.icons8.com/cotton/25/000000/create-new--v1.png" class="float-right mr-2 mt-2 clickable"
-            data-toggle="collapse" href=".edit_icon" />
+        
+       
         <h2 class="text-center pt-4">{{ item.title }}</h2>
        
         <div class="row m-0 justify-content-center">
