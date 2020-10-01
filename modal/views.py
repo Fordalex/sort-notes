@@ -78,6 +78,9 @@ def edit_data(request, modal_data_pk, section_pk, item_pk, subject_pk):
 
     context = {
         'modal_data': modal_data,
+        'subject': subject,
+        'section': section,
+        'item': item,
     }
         
     return render(request, 'modal/edit_data.html', context)
@@ -92,5 +95,8 @@ def remove_data(request, data_type, data_pk, subject_pk, item_pk):
     if data_type == 'modal_section':
         modalSection = get_object_or_404(ModalSection, pk=data_pk)
         modalSection.delete()
+    elif data_type == 'modal_data':
+        modalData = get_object_or_404(ModalData, pk=data_pk)
+        modalData.delete()
 
     return redirect('modal', subject.id, item.id)

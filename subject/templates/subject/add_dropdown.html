@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <img src="{{ MEDIA_URL }}background/notes_background.png" class="background-image">
 
@@ -10,7 +10,7 @@
             <div class="form-wrapper">
                 <h4 class="text-dark">Add Dropdown</h4>
 
-                <form method="POST">
+                <form method="POST" id="dropdown-form">
                     {% csrf_token %}
                     {{ dropdownForm }}
                     <a class="btn btn-warning container-fluid mt-3" target="_blank" href="https://icons8.com/">Icons</a>
@@ -22,5 +22,11 @@
 
     </div>
 </div>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/icon_size.js' %}"></script>
 
 {% endblock %}

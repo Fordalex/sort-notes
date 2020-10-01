@@ -63,6 +63,7 @@ class dropdownForm(forms.ModelForm):
                 attrs = {
                     'class' : 'container-fluid form-control',
                     'placeholder': 'https://img.icons8.com/cotton/18/000000/create-new--v1.png',
+                    'id': 'icon-element',
                     }
             ),
         }

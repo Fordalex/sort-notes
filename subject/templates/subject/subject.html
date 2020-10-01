@@ -19,12 +19,14 @@
         <div class="row m-0 p-0 justify-content-center">
             {% for section in subject.section.all %}
             <div class="col-12 col-md-6 col-lg-4 p-0 p-md-2 mt-3">
-                <div class="row m-0 p-1 secondary-background wobble-onload" id="frontend-section">
+                <div class="row m-0 p-1 pt-3 secondary-background wobble-onload" id="frontend-section">
                     <div class="col-12 p-0">
                         <a class="float-right collapse edit_icon" href="/subject/edit_section/{{ section.id }}/{{ subject.id }}"><img
                                 src="https://img.icons8.com/cotton/25/000000/create-new--v1.png"/></a>
+                        {% if section.title %}
                         <h3 class="py-3 text-center secondary-title">{{ section.title }}</h3>
                         <hr>
+                        {% endif %}
                     </div>
                     {% for attribute in section.attribute.all %}
                     <div class="col-12 p-0 d-flex justify-content-between">
@@ -95,11 +97,14 @@
                                         src="https://img.icons8.com/flat_round/20/000000/plus.png" class="py-1 collapse edit_icon" /></a>
                             </dt>
                         </dl>
+                        {% if not forloop.last %}
+                        <div class="col-12 m-0 p-0">
+                            <hr>
+                        </div>
+                        {% endif %}
                     </div>
                     {% endfor %}
-                    <div class="col-12 m-0 p-0">
-                        <hr>
-                    </div>
+            
                     <a class="col-12 p-0 d-flex justify-content-center low-opacity"
                         href="/subject/add_attribute/{{ section.id }}/{{subject.id}}">
                         <img src="https://img.icons8.com/flat_round/25/000000/plus.png" class="py-2 add-icon collapse edit_icon" />
