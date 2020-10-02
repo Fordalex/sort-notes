@@ -11,7 +11,6 @@ def convert_string_into_data_type(sections):
                 data_json = json.loads(data.data)
             except:
                 data_json = data.data
-            print(type(data_json))
 
             data_dict = {
                 'data': data_json,
@@ -54,12 +53,26 @@ def format_data_for_database(request):
     elif data_style == 'Definition':
         data = request.POST.get('definition')
     # 3d print
-    elif data_style == '3D Print':
+    elif data_style == 'Image':
+        attriubteArray = []
+        item_count = 1
+        while True:
+            input_name_attriubte = f'attribute-{item_count}'
+            input_name_value = f'value-{item_count}'
+            attriubte_item = request.POST.get(input_name_attriubte)
+            value_item = request.POST.get(input_name_value)
+            if not attriubte_item:
+                break
+            data_dict = {
+                'title': attriubte_item,
+                'value': value_item
+            }
+            attriubteArray.append(data_dict)
+            item_count += 1
+
         data = {
             "description": request.POST.get('description'),
-            "layer_height": request.POST.get('layer_height'),
-            "density": request.POST.get('density'),
-            "print_length": request.POST.get('print_length'),
+            "attributes": attriubteArray,
         }
     data = str(data).replace("'", '"')
 

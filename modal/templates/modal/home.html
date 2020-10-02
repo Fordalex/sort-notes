@@ -58,28 +58,21 @@ data-toggle="collapse" href=".edit_icon" />
                             <!-- definition -->
                             {% elif data.data_style == 'Definition' %}
                             <p><b>{{ data.title }}</b> : {{ data.data }}</p>
-                            {% elif data.data_style == '3D Print' %}
+                            {% elif data.data_style == 'Image' %}
                             <!-- 3d print -->
                             <h6>{{ data.title }}</h6>
                             <p class="m-0 p-0">{{ data.data.description }}</p>
                             <img src="{{ MEDIA_URL }}{{ data.image }}" width="100%" class="my-2" style="border-radius: 4px;">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <b>Layer Height</b>
-                                    <br>
-                                    <p class="m-0">{{ data.data.layer_height }}</p>
-                                </div>
-                                <div>
-                                    <b>Density</b>
-                                    <br>
-                                    <p class="m-0">{{ data.data.density }}</p>
-                                </div>
-                                <div>
-                                    <b>Print Length</b>
-                                    <br>
-                                    <p class="m-0">{{ data.data.print_length }}</p>
-                                </div>
+                            <div class="row m-0 p-0">
+                                {% for item in data.data.attributes %}
+                                    <div class="col-6 m-0 pl-0">
+                                        <p class="m-0 p-0"><b>{{ item.title }}</b></p>
+                                        <p class="m-0 p-0">{{ item.value }}</p>
+                                        <hr>
+                                    </div>
+                                {% endfor %}
                             </div>
+                       
                             {% endif %}
                             
                             {% if not forloop.last %}

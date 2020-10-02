@@ -10,14 +10,14 @@
         <h4 class="text-dark">Edit Data</h4>
         {% endif %}
 
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <label>Note Style</label>
             <select name="data_style" class="form-control" id="data_style">
                 <option></option>
                 <option value="List">List</option>
                 <option value="Definition">Definition</option>
-                <option value="3D Print">3D Print</option>
+                <option value="Image">Image</option>
             </select>
             <div id="form-container"></div>
             <div id="form-buttons"></div>
