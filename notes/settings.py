@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'menu',
     'subject',
     'modal',
+    #other
+    'storages',
 ]
 
 MIDDLEWARE = [
