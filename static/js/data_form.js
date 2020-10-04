@@ -39,6 +39,15 @@ $(document).ready(function() {
                 `;
 
             $('#form-container').html(dataForm);
+        } else if ($('#data_style').val() == 'Code') {
+            var dataForm = `
+                <label>Title</label>
+                <input name="title" class="form-control">
+                <label>Code</label>
+                <textarea name="code" class="form-control"></textarea>
+                `;
+
+            $('#form-container').html(dataForm);
         }
 
     });

@@ -20,9 +20,9 @@ I need to add a click and drag feature to allow the user to rearrange their note
 
 ## Left to do
 
-The navigation needs to be added, using the fields and subjects that the user has created.
+  - The navigation needs to be added, using the fields and subjects that the user has created.
 
-I also need to host the static files on AmazonAWS for the images and videos to be saved.
+  - Videos need to be added, images currently work fine.
 
 ## Bugs
 

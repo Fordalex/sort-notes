@@ -74,6 +74,9 @@ def format_data_for_database(request):
             "description": request.POST.get('description'),
             "attributes": attriubteArray,
         }
+    elif data_style == 'Code':
+        data = request.POST.get('code')
+
     data = str(data).replace("'", '"')
 
     return str(data)
